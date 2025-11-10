@@ -1,0 +1,821 @@
+/* Impede rolagem lateral e corta qualquer excesso */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ===== KIT FESTA ===== */
+#kit-festa {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(12, 115, 175);
+  padding: 40px 0;
+  border-radius: 40% 10% 50% 10% / 10% 50% 10% 50%;
+  overflow: hidden;
+}
+
+#kit-festa .div2 {
+  width: 100%;
+  max-width: 1400px; /* aumentamos a largura máxima no PC */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#kit-festa .carrossel-track {
+  display: flex;
+  align-items: center;
+  gap: 60px;  
+  animation: deslizar-kit 30s linear infinite;
+  will-change: transform;
+}
+
+#kit-festa .carrossel-track img {
+  height: 260px; /* controla a altura e evita corte */
+  width: auto;   /* mantém proporção natural */
+  border-radius: 20px;
+  object-fit: contain;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+
+#kit-festa .carrossel-track img:hover {
+  transform: scale(1.05);
+}
+
+/* ======== Correção do layout do KIT FESTA ======== */
+#kit-festa .div2 section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 20px;
+  overflow: hidden;
+}
+
+#kit-festa .div2 img {
+  max-width: 160px;
+  height: auto;
+  border-radius: 15px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+#kit-festa .div2 img:hover {
+  transform: scale(1.05);
+}
+
+
+/* 🔁 Animação de loop infinito contínuo */
+@keyframes deslizar-kit {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+
+/* 🔁 Animação de loop infinito contínuo */
+@keyframes deslizar-kit {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+/* Ajuste do carrossel para telas maiores (PC) */
+@media screen and (min-width: 768px) {
+  #kit-festa .div2 {
+    max-width: 1200px;
+  }
+
+  #kit-festa .carrossel-track img {
+    width: 280px;
+  }
+}
+
+.botao-cardapio {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+  margin: 10px auto;
+  background-color: #ff7bac;
+  color: #fff;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-decoration: none;
+  padding: 10px 30px;
+  border-radius: 20px;
+  width: fit-content;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.botao-cardapio:hover {
+  background-color: #e75b92;
+  transform: scale(1.05);
+}
+
+.botao-cardapio::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: 0.5s;
+}
+
+.botao-cardapio:hover::after {
+  left: 100%;
+}
+
+
+
+
+/* Carrossel */
+
+.container {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    transform-style: preserve-3d;
+}
+
+/* Carrossel - COM ANIMAÇÃO CONTÍNUA AUTOMÁTICA */
+.carrossel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    animation: rotateCarrossel 35s linear infinite;
+}
+
+/* Animação de rotação contínua */
+@keyframes rotateCarrossel {
+    from {
+        transform: rotateY(1deg);
+    }
+    to {
+        transform: rotateY(-160deg);
+    }
+}
+
+.card {
+    width: 130px;
+    height: 180px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: absolute;
+    backface-visibility: hidden;
+    box-shadow: 0 20px 45px rgb(255, 255, 255);
+}
+
+/* Posiciona cada card no espaço 3D */
+.carrossel .card:nth-child(1) { transform: rotateY(15deg) translateZ(300px); }
+.carrossel .card:nth-child(2) { transform: rotateY(45deg) translateZ(300px); }
+.carrossel .card:nth-child(3) { transform: rotateY(75deg) translateZ(300px); }
+.carrossel .card:nth-child(4) { transform: rotateY(108deg) translateZ(300px); }
+.carrossel .card:nth-child(5) { transform: rotateY(125deg) translateZ(80px); }
+.carrossel .card:nth-child(6) { transform: rotateY(185deg) translateZ(300px); }
+.carrossel .card:nth-child(7) { transform: rotateY(200deg) translateZ(300px); }
+.carrossel .card:nth-child(8) { transform: rotateY(315deg) translateZ(300px); }
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* ========= AJUSTE RESPONSIVO (sem alterar o layout original) ========= */
+
+/* Tablets e telas médias */
+@media (max-width: 1024px) {
+  body {
+    font-size: 1rem;
+  }
+
+  header img {
+    width: 80px;
+    height: 80px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .div2 img,
+  .div3 img,
+  .sobre-nos img {
+    width: 45%;
+    height: auto;
+  }
+
+  .div2 article,
+  .div3 article,
+  .sobre-nos article {
+    font-size: 1rem;
+  }
+  
+  #kit-festa .carrossel-track img {
+  width: 200px;
+  }
+
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header img {
+    width: 70px;
+    height: 70px;
+  }
+
+  header ul {
+    gap: 10px;
+  }
+
+  header ul li a {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto;
+  }
+
+  .div2,
+  .div3,
+  .sobre-nos section {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .div2 img,
+  .div3 img,
+  .sobre-nos img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 15px;
+  }
+
+  .div2 article,
+  .div3 article,
+  .sobre-nos article {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  footer {
+    font-size: 0.9rem;
+  }
+
+  .whatsapp-fixo img {
+    width: 60px;
+    height: 60px;
+  }
+  
+  #kit-festa .carrossel-track {
+  gap: 20px;
+  }
+
+  #kit-festa .carrossel-track img {
+  width: 160px;
+  }
+
+}
+
+/* Telas muito pequenas */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  header ul li a {
+    font-size: 0.85rem;
+  }
+
+  .div2 img,
+  .div3 img {
+    width: 100%;
+  }
+
+  #kit-festa .carrossel-track img {
+  width: 130px;
+  border-radius: 15px;
+  }
+
+}
+
+
+
+/* Estilo para o cabeçalho principal */
+
+h1 {
+    position: absolute;
+    font-weight: 600;
+    top: 17px;
+    font-size: 2.1rem;
+    color: #ffffff;  /* branco */
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+    white-space: nowrap;         
+    overflow: hidden;            
+    border-right: 5px solid #fff; /* cursor piscando branco */
+    width: 0;                    
+    animation: typing 4s steps(30, end) forwards, blink 0.7s infinite, glitter 3s infinite linear;
+    
+}
+
+b {
+    font-weight: 200;
+    color: #ffffff;  /* branco */
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #fff;
+    white-space: nowrap;         
+    overflow: hidden;            
+    width: 0;                    
+    animation: typing 4s steps(30, end) forwards, blink 0.7s infinite, glitter 3s infinite linear; 
+}
+
+
+/* Efeito de digitação */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 22% }
+}
+
+/* Cursor piscando */
+@keyframes blink {
+  0%, 50% { border-color: #fff }
+  51%, 100% { border-color: transparent }
+}
+
+/* Glitter animado em tons de branco */
+@keyframes glitter {
+  0% { text-shadow: 0 0 5px #fff, 0 0 10px #f8f8f8, 0 0 20px #fff; }
+  50% { text-shadow: 0 0 10px #fff, 0 0 20px #e6e6e6, 0 0 30px #fff; }
+  100% { text-shadow: 0 0 5px #fff, 0 0 15px #f8f8f8, 0 0 25px #fff; }
+}
+
+
+
+body, a {
+    margin: 0; /* Remove margens padrão */
+    font-family: Arial, sans-serif; /* Fonte padrão para o corpo */
+}
+
+/* ======== Conteúdo ======== */
+#conteudo {
+    display: none; /* Inicialmente oculto */
+    padding: 100px;
+    background: transparent;
+    
+    
+}
+
+/* ======== Cabeçalho ======== */
+header {
+    width: 100%;
+    min-height: 100px;
+    background-color: rgb(113, 195, 250); 
+    top: 0;
+    width: 100%;    
+    font-weight: 800;
+    border-radius: 10px;
+    box-sizing: border-box; /* Garante que o padding não aumente a largura */
+    transition: background-color 0.3s ease;
+    header {
+    z-index: 9999; /* garante que fica por cima de tudo */
+}
+
+    
+        
+}
+
+header h2 {
+    position: absolute;
+    margin-left: 50px;
+    font-size: 2.5rem;  /* Definindo um tamanho fixo para o h2 */
+    margin: 0;          /* Remove margens padrão do h2 */
+    text-align: center; /* Centraliza o texto dentro do cabeçalho */
+    flex-wrap: wrap; /* deixa quebrar no celular */
+}
+
+header .div1 {
+    display: flex;
+    justify-content: center; /* logo à esquerda, menu à direita */
+    align-items: center;
+    flex-wrap: wrap; /* deixa quebrar no celular */
+}
+
+
+header .div1 img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    border-radius: 10px; /* Borda arredondada */
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem; /* espaço entre os itens */
+    margin: 0; /* remove o margin-left fixo */
+    padding: 0;
+    align-items: center;
+}
+
+header ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+
+.divmeio {
+    background-color: rgb(113, 195, 250);
+    padding: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    border-radius: /* Borda arredondada */
+        50% 10% 50% 10%/
+        10% 50% 10% 50%
+}
+
+.div2 {
+    background-color: rgb(12, 115, 175);
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    border-radius: /* Borda arredondada */
+        50% 10% 50% 10%/
+        10% 50% 10% 50%
+}
+
+.div2 section {
+    display: flex; /* Coloca imagem e texto lado a lado */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 250px; /* Espaço entre imagem e texto */   
+}
+
+
+
+.div2 article {
+    color: #000000;
+    font-size: 1.3rem;    
+    font-style: normal; /* Garante que o texto não seja itálico */
+    animation: fadeIn 2s forwards;  /* Animação de aparição */ 
+    justify-content: end;
+    align-items: center;
+    
+     
+}
+
+.div2 img {
+    width: 300px;
+    opacity: 0; /* Começa invisível */
+    animation: fadeIn 2s forwards;  /* Animação de aparição */    
+    border-radius: 10px; /* Borda arredondada */    
+    align-items: center;    
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;   /* começa invisível */
+        transform: translateY(20px); /* opcional: sobe suavemente */
+    }
+    to {
+        opacity: 1;   /* termina visível */
+        transform: translateY(0);
+    }
+}
+
+
+.div3 {
+    background-color: rgb(12, 115, 175);    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    gap: 50px;
+    border-radius: 
+        10% 50% 10% 50%/
+        50% 10% 50% 10%
+} 
+
+.div3 section {
+    display: flex;
+    align-items: center;    
+    gap: 50px;
+}
+
+.div3 img {
+    width: 300px; 
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    display: flex;
+    border-radius: 140px;    
+    align-items: center;
+    gap: 50px;
+}
+
+.div3 article {
+    color: #fff;
+    font-size: 1.2rem;
+    max-width: 400px;
+    font-style: normal; 
+    align-items: center;
+}
+
+/* ======== Animação Zoom Out Top ======== */
+.docinhos {
+  animation: zoomOutTop 1s ease forwards;
+}
+
+@keyframes zoomOutTop {
+  0% {
+    opacity: 0;
+    transform: translateY(-100px) scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0) scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+
+.sobre-nos {
+  background: linear-gradient(135deg, rgb(113, 195, 250), rgb(12, 115, 175));
+  padding: 80px 20px;
+  border-radius: 40px;
+  color: #fff;
+  text-align: center;
+}
+
+.sobre-nos h2 {
+  font-size: 2.5rem;
+  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.sobre-nos section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+}
+
+.sobre-nos img {
+  width: 300px;
+  border-radius: 30px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+
+.sobre-nos article {
+  max-width: 500px;
+  text-align: justify;
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+
+.footer-contato {   
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.contato {
+    display: flex;
+    justify-content: center;
+}
+
+p, span {
+    display: flex;
+    justify-content: center;
+}
+
+/* Aplicamos o posicionamento fixo e as coordenadas à tag <a> */
+.whatsapp-fixo {
+    text-decoration: none; /* tira o sublinhado */
+    position: fixed; 
+    /* 20 pixels de distância da borda inferior */
+    bottom: 20px; 
+    /* 20 pixels de distância da borda direita */
+    right: 20px; 
+    /* Garante que o ícone fique por cima de outros elementos */
+    z-index: 1000; 
+}
+
+/* Estiliza a imagem dentro do link */
+.whatsapp-fixo img {
+    /* Define o tamanho */
+    width: 80px;
+    height: 80px;
+    /* Adiciona uma transição suave para o efeito hover (opcional) */
+    transition: transform 0.3s ease-in-out;
+    border-radius: 20%;
+    box-shadow: 0 0 20px #25d366, 0 0 25px #25d366 inset;
+    animation: neonRotate 3s infinite linear;
+}
+@keyframes neonRotate {
+     0% { box-shadow: 0 0 10px #25d366, 0 0 30px #25d366 inset; }
+    50% { box-shadow: 0 0 25px #00ff88, 0 0 60px #25d366 inset; }
+    100% { box-shadow: 0 0 10px #25d366, 0 0 30px #25d366 inset; }
+}
+
+/* Efeito ao passar o mouse (opcional) */
+.whatsapp-fixo img:hover {
+    transform: scale(1.1); /* Aumenta um pouco o ícone */
+}
+
+.footer-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    background-color: rgba(145, 212, 238, 0.315);
+    border-radius: 10px;
+}
+
+.whatsapp-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 50px;
+    backdrop-filter: blur(5px);
+}
+
+.whatsapp-container img {
+    width: 90px;
+    height: 90px;
+    border-radius: 20%;
+    box-shadow: 0 0 20px #25d366, 0 0 25px #25d366 inset;    
+    transition: transform 0.3s;
+}
+
+.whatsapp-container:hover img {
+    transform: scale(1.1);
+}
+
+
+/* ======== AJUSTES RESPONSIVOS SEM ALTERAR O DESIGN ORIGINAL ======== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+  body {
+    font-size: 1rem;
+  }
+
+  header ul {
+    flex-wrap: nowrap;
+    gap: 1rem;
+  }
+
+  header ul li a {
+    font-size: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .div2 img,
+  .div3 img,
+  .sobre-nos img {
+    max-width: 90%;
+    height: auto;
+  }
+
+  .div2 section,
+  .div3 section,
+  .sobre-nos section {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+/* Celulares */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.95rem;
+    overflow-x: hidden;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  header ul {
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  header ul li a {
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    width: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .div2, .div3, .sobre-nos section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .div2 img,
+  .div3 img,
+  .sobre-nos img {
+    width: 85%;
+    height: auto;
+    max-width: 350px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .div2 article,
+  .div3 article,
+  .sobre-nos article {
+    font-size: 1rem;
+    max-width: 90%;
+  }
+
+  .carrossel-wrapper, .container {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+
+  footer {
+    text-align: center;
+    font-size: 0.9rem;
+  }
+
+  .whatsapp-fixo img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Telas muito pequenas (celulares menores que 480px) */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  header ul li a {
+    font-size: 0.85rem;
+  }
+
+  .div2 img,
+  .div3 img,
+  .sobre-nos img {
+    width: 100%;
+    height: auto;
+  }
+
+  .div2 article,
+  .div3 article {
+    font-size: 0.9rem;
+  }
+}
